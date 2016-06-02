@@ -48,7 +48,7 @@ public class BoardController {
 	@RequestMapping(value="/read", method=RequestMethod.GET)
 	public void read(@RequestParam("bno") Integer bno, Model model) throws Exception {
 		logger.info("read?bno={} ..........", bno);
-		model.addAttribute("boardVO", service.read(bno));
+		model.addAttribute(service.read(bno));
 	}
 	
 	// remove bno=18
@@ -68,7 +68,7 @@ public class BoardController {
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public void modifyGET(@RequestParam("bno") Integer bno, Model model) throws Exception {
 		logger.info("modify?bno={} ..........", bno);
-		model.addAttribute("boardVO", service.read(bno));
+		model.addAttribute(service.read(bno));
 	}
 	
 	// modify post boardVO
@@ -79,7 +79,7 @@ public class BoardController {
 			service.modify(board);
 			rttr.addFlashAttribute("result", "success");
 		} else {
-			logger.warn("boardVO is null!");
+			logger.warn("boardVO is wrong! boardVO:", board);
 		}
 		return "redirect:/board/listAll";
 	}
