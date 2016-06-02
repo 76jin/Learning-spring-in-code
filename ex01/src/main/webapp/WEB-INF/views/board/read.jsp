@@ -11,7 +11,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">REGISTER BOARD</h3>
+					<h3 class="box-title">READ BOARD</h3>
 				</div> <!-- /.box-header -->
 				
 				<!-- 수정/삭제 작업에서 bno 정보가 필요하다. -->
@@ -24,20 +24,17 @@
 			        <div class="form-group">
 			            <label for="exampleInputEmail1">Title</label>
 			            <input type="text" name ="title" class="form-control"
-			                    placeholder="Enter Title" readonly="readonly" 
-			                    value="${boardVO.title}" >
+			                    readonly="readonly" value="${boardVO.title}" >
 			        </div>
 			        <div class="form-group">
 			            <label for="exampleInputEmail1">Content</label>
 			            <textarea rows="3" class="form-control" name="content"
-			                placeholder="Enter ..." 
 			                readonly="readonly">${boardVO.content}</textarea>
 			        </div>
 			        <div class="form-group">
 			            <label for="exampleInputEmail1">Writer</label>
 			            <input type="text" name="writer" class="form-control"
-			                placeholder="Enter Writer" readonly="readonly" 
-			                value="${boardVO.writer}" >
+			                readonly="readonly" value="${boardVO.writer}" >
 			        </div>
 			    </div> <!-- /.box-body -->
 			    

@@ -51,4 +51,37 @@ public class BoardController {
 		model.addAttribute("boardVO", service.read(bno));
 	}
 	
+	// remove bno=18
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(@RequestParam("bno") Integer bno, RedirectAttributes rttr) throws Exception {
+		logger.info("remove bno={} ..........", bno);
+		if (bno != null && bno > 0) {
+			service.remove(bno);
+			rttr.addFlashAttribute("result", "success");
+		} else {
+			logger.warn("bno is wrong! bno:{}", bno);
+		}
+		return "redirect:/board/listAll";
+	}
+	
+	// modify?bno=17
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public void modifyGET(@RequestParam("bno") Integer bno, Model model) throws Exception {
+		logger.info("modify?bno={} ..........", bno);
+		model.addAttribute("boardVO", service.read(bno));
+	}
+	
+	// modify post boardVO
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modifyPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
+		logger.info("modify post board={} ..........", board);
+		if (board != null) {
+			service.modify(board);
+			rttr.addFlashAttribute("result", "success");
+		} else {
+			logger.warn("boardVO is null!");
+		}
+		return "redirect:/board/listAll";
+	}
+	
 }

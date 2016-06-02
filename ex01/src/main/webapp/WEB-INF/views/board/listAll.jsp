@@ -56,6 +56,6 @@
 <script type="text/javascript">
 var result = "${result}";
 if (result == "success") {
-	alert("등록이 완료되었습니다.");
+	alert("처리가 완료되었습니다.");
 }
 </script>
