@@ -2,6 +2,8 @@ package org.zerock.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Page;
 import org.zerock.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -60,5 +63,27 @@ public class BoardDAOTest {
 	@Test
 	public void testListAll() throws Exception {
 		logger.info("## listAll:{}", dao.listAll());
+	}
+	
+	@Test
+	public void testListPage1() throws Exception {
+		int page = 4;
+		List<BoardVO> list = dao.listPage(page);
+		
+		for (BoardVO board : list) {
+			logger.info(board.getBno() + ":" + board.getTitle());
+		}
+	}
+	@Test
+	public void testListPage() throws Exception {
+		Page page = new Page();
+		page.setPage(2);
+		page.setPerPageNum(20);
+		
+		List<BoardVO> list = dao.listPage(page);
+		
+		for (BoardVO board : list) {
+			logger.info(board.getBno() + ":" + board.getTitle());
+		}
 	}
 }

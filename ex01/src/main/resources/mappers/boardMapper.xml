@@ -30,7 +30,8 @@
 		<![CDATA[
 		select bno, title, content, writer, regdate, viewcnt 
 		from tbl_board 
-		where bno > 0 order by bno desc
+		where bno > 0 
+		order by bno desc
 		]]>
 	</select>
 	
@@ -38,4 +39,26 @@
 		SELECT LAST_INSERT_ID()
 	</select>
 
+    <!-- 
+	<select id="listPage" resultType="BoardVO">
+		<![CDATA[
+		select bno, title, content, writer, regdate, viewcnt 
+		from tbl_board 
+		where bno > 0 
+		order by bno desc, regdate desc
+		limit #{page}, 10
+		]]>
+	</select>
+     -->
+
+	<select id="listPage" resultType="BoardVO">
+		<![CDATA[
+		select bno, title, content, writer, regdate, viewcnt 
+		from tbl_board 
+		where bno > 0 
+		order by bno desc, regdate desc
+		limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
+	
 </mapper>

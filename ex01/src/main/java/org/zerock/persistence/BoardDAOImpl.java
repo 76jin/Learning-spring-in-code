@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Page;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -44,6 +45,20 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public Integer getLastInsertId() throws Exception {
 		return session.selectOne(NAMESPACE + ".getLastInsertId");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		if (page <= 0) {
+			page = 1;
+		}
+		page = (page - 1) * 10; // 0, 10, 20
+		return session.selectList(NAMESPACE + ".listPage", page);
+	}
+
+	@Override
+	public List<BoardVO> listPage(Page page) throws Exception {
+		return session.selectList(NAMESPACE + ".listPage", page);
 	}
 
 }
