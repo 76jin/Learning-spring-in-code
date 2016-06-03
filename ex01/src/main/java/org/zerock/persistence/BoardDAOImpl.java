@@ -61,4 +61,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectList(NAMESPACE + ".listPage", page);
 	}
 
+	@Override
+	public int countPaging(Page page) throws Exception {
+		return session.selectOne(NAMESPACE + ".countPaging", page);
+	}
+
 }

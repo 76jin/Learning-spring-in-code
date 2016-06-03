@@ -19,4 +19,6 @@ public interface BoardService {
 	
 	public List<BoardVO> listPage(Page page) throws Exception;
 	
+	public int listCountPaging(Page page) throws Exception;	// totalCount 반환
+	
 }

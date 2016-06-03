@@ -26,4 +26,6 @@ public interface BoardDAO {
 	
 	public List<BoardVO> listPage(Page page) throws Exception;
 	
+	public int countPaging(Page page) throws Exception;	// totalCount 반환
+	
 }

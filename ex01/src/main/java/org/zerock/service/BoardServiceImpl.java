@@ -45,4 +45,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listPage(page);
 	}
 
+	@Override
+	public int listCountPaging(Page page) throws Exception {
+		return dao.countPaging(page);
+	}
+
 }
