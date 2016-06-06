@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Page;
+import org.zerock.domain.SearchPage;
 import org.zerock.persistence.BoardDAO;
 
 @Service
@@ -48,6 +49,16 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int listCountPaging(Page page) throws Exception {
 		return dao.countPaging(page);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchPage page) throws Exception {
+		return dao.listSearch(page);
+	}
+
+	@Override
+	public int listSearchCount(SearchPage page) throws Exception {
+		return dao.listSearchCount(page);
 	}
 
 }

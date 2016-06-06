@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Page;
+import org.zerock.domain.SearchPage;
 
 public interface BoardDAO {
 
@@ -27,5 +28,9 @@ public interface BoardDAO {
 	public List<BoardVO> listPage(Page page) throws Exception;
 	
 	public int countPaging(Page page) throws Exception;	// totalCount 반환
+	
+	public List<BoardVO> listSearch(SearchPage page) throws Exception; // 검색 + 페이징 처리
+	
+	public int listSearchCount(SearchPage page) throws Exception;
 	
 }

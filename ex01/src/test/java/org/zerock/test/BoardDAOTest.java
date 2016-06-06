@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Page;
+import org.zerock.domain.SearchPage;
 import org.zerock.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -117,5 +118,29 @@ public class BoardDAOTest {
 		
 		logger.info("/board/read?bno=12&perPageNum=20");
 		logger.info(uriComponents.toString());
+	}
+	
+	@Test
+	public void testDynamic1() throws Exception {
+		
+		SearchPage page = new SearchPage();
+		page.setPage(1);
+		page.setKeyword("01");
+		page.setSearchType("n");
+//		page.setSearchType("t");
+//		page.setSearchType("c");
+//		page.setSearchType("w");
+//		page.setSearchType("tc");
+//		page.setSearchType("cw");
+//		page.setSearchType("tcw");
+		
+		logger.info("=========================");
+		List<BoardVO> list = dao.listSearch(page);
+		
+		for (BoardVO board : list) 
+			logger.info("{}:{}", board.getBno(), board.getTitle());
+		logger.info("=========================");
+		
+//		logger.info("COUNT:{}", dao.listSearchCount(page)) ;
 	}
 }
