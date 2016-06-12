@@ -14,15 +14,12 @@
 					<h3 class="box-title">MODIFY BOARD</h3>
 				</div> <!-- /.box-header -->
 				
-				<form role="form" method="post">
+				<form role="form" method="post" action="modifyPage">
 				    <!-- 페이지 정보 저장용 정보 -->
 				    <input type="hidden" name="page" value="${page.page }" >
 				    <input type="hidden" name="perPageNum" value="${page.perPageNum }" >
-				    <!-- 
-				        TODO: 이 소스코드 필요한데, 없어야 정상 동작함. 이유 모르겠음.
                     <input type="hidden" name="searchType" value="${page.searchType}" >
                     <input type="hidden" name="keyword" value="${page.keyword}" >
-                     -->
 				    
 					<!-- 수정용 정보 출력 -->
 				    <div class="box-body">
